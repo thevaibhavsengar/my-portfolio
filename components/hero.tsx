@@ -1,9 +1,14 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { ArrowDownRight, Github, Linkedin, Mail, MapPin, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+// Canvas needs the browser (WebGL/window), so disable SSR for it
+const Laptop3D = dynamic(() => import("@/components/laptop-3d").then((m) => m.Laptop3D), {
+  ssr: false,
+});
 
 export function Hero() {
   return (
@@ -15,10 +20,10 @@ export function Hero() {
           <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-cyan-300/20 bg-cyan-300/[0.08] px-4 py-2 text-sm text-cyan-100">
             <Sparkles className="h-4 w-4" /> Open to full-time software roles
           </div>
-          <h1 className="text-balance font-inter text-2xl font-semibold leading-[0.95] text-white sm:text-7xl lg:text-8xl">
+          <h1 className="text-balance font-inter text-xl font-semibold leading-[0.95] text-white sm:text-xl lg:text-6xl">
             Hey There! I am Vaibhav Sengar.
           </h1>
-          <p className="mt-7 max-w-2xl text-lg font-inter leading-8 text-slate-300 sm:text-xl">
+          <p className="mt-7 max-w-2xl text-md font-inter leading-8 text-slate-300 sm:text-md">
             Software Developer from Nagpur, India focused on full-stack systems, Generative AI, RAG workflows, and deep learning applications that solve practical problems with clarity and speed.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -31,33 +36,17 @@ export function Hero() {
             <a className="inline-flex items-center gap-2 transition hover:text-white" href="https://www.linkedin.com/in/thevaibhavsengar/" target="_blank"><Linkedin className="h-4 w-4" /> LinkedIn</a>
           </div>
         </motion.div>
+
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.1 }}
-          className="relative mx-auto flex w-full max-w-[520px] items-center justify-center"
-          style={{ perspective: 1200 }}
+          className="relative mx-auto flex h-[420px] w-full max-w-[520px] items-center justify-center sm:h-[520px]"
         >
           <div className="absolute h-72 w-72 rounded-full bg-cyan-400/20 blur-3xl" />
-          <motion.div
-            className="relative w-full max-w-[440px]"
-            style={{ transformStyle: "preserve-3d" }}
-            animate={{
-              rotateY: [-18, 18, -18],
-              rotateX: [8, -8, 8],
-              y: [0, -18, 0]
-            }}
-            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <Image
-              src="/images/laptop.png"
-              alt="Laptop"
-              width={900}
-              height={900}
-              className="h-auto w-full drop-shadow-[0_35px_60px_rgba(0,0,0,0.4)]"
-              priority
-            />
-          </motion.div>
+          <div className="relative h-full w-full">
+            <Laptop3D />
+          </div>
         </motion.div>
       </div>
     </section>
