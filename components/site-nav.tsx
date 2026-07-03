@@ -9,7 +9,7 @@ const nav = ["About", "Skills", "Projects", "Experience", "Contact"];
 export function SiteNav() {
   return (
     <motion.header initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-[#020714]/[0.70] backdrop-blur-2xl">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-10">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-9 lg:px-10">
         <a href="#home" className="font-display text-sm font-semibold uppercase tracking-[0.28em] text-white">Vaibhav</a>
         <nav className="hidden items-center gap-1 md:flex">
           {nav.map((item) => (
