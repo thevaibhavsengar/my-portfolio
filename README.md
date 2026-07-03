@@ -24,6 +24,8 @@ This is the source for my personal portfolio — a fast, animated, single-page s
 
 I'm a Computer Science graduate with a full-stack foundation and a growing specialization in **Generative AI** and **deep learning systems**. My work spans medical image analysis, Retrieval-Augmented Generation, secure role-based applications, and API-first backends — this site brings that work together in one place.
 
+## Preview
+
 <p align="center">
   <img src="portfolio.png" width="100%"/>
 </p>
