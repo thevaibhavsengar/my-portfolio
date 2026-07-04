@@ -27,7 +27,7 @@ I'm a Computer Science graduate with a full-stack foundation and a growing speci
 ## Preview
 
 <p align="center">
-  <img src="model.png" width="100%"/>
+  <img src="glb.png" width="100%"/>
 </p>
 
 ## 🧭 What's Inside
