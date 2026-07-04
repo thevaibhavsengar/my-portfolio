@@ -1,23 +1,17 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Manrope, Sora } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const manrope = Manrope({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-manrope",
-  display: "swap"
-});
-
-const sora = Sora({
-  subsets: ["latin"],
-  variable: "--font-sora",
+  variable: "--font-inter",
   display: "swap"
 });
 
 export const metadata: Metadata = {
   title: "Vaibhav Sengar | Software Developer",
-  description: "Portfolio of Vaibhav Sengar, a software developer focused on full-stack engineering, Generative AI, RAG systems, and deep learning applications.",
+  description: "Portfolio of Vaibhav Sengar,Software Developer passionate about building scalable full-stack applications and AI-powered solutions. Interested in Generative AI, RAG workflows, and deep learning, with a commitment to creating practical, efficient, and user-focused software while continuously learning and growing as an engineer.",
   keywords: ["Vaibhav Sengar", "Software Developer", "Generative AI", "React", "FastAPI", "RAG", "Deep Learning"],
   authors: [{ name: "Vaibhav Sengar" }],
   openGraph: {
@@ -31,7 +25,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en" className="dark">
-      <body className={manrope.variable + " " + sora.variable + " font-sans antialiased"}>{children}</body>
+      <body className={inter.variable + " font-sans antialiased"}>{children}</body>
     </html>
   );
 }

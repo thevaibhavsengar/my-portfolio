@@ -38,6 +38,8 @@ body {
     radial-gradient(circle at 88% 12%, rgba(139, 92, 246, 0.24), transparent 30rem),
     radial-gradient(circle at 52% 46%, rgba(14, 165, 233, 0.12), transparent 34rem),
     radial-gradient(circle at 84% 84%, rgba(16, 185, 129, 0.14), transparent 28rem),
+    radial-gradient(circle at 68% 88%, rgba(250, 204, 21, 0.30), transparent 26rem),
+    radial-gradient(circle at 30% 30%, rgba(255, 230, 0, 0.15), transparent 30rem),
     linear-gradient(145deg, #020617 0%, #07122a 34%, #081a33 62%, #020617 100%);
   color: hsl(var(--foreground));
 }
@@ -106,4 +108,42 @@ h1, h2, h3, h4, h5, h6, p, a, span, button, li {
   mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   mask-composite: exclude;
   pointer-events: none;
+}
+
+/* Liquid glass hover: a specular light sweep + blur/saturation boost, like light passing through curved glass */
+.liquid-glass {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: backdrop-filter 0.5s ease, filter 0.5s ease;
+}
+
+.liquid-glass::before {
+  content: "";
+  position: absolute;
+  inset: -60% -60%;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 42%,
+    rgba(255, 255, 255, 0.06) 46%,
+    rgba(255, 255, 255, 0.55) 49.5%,
+    rgba(180, 245, 255, 0.65) 50.5%,
+    rgba(255, 255, 255, 0.55) 51.5%,
+    rgba(255, 255, 255, 0.06) 54%,
+    transparent 58%
+  );
+  transform: translate3d(-60%, -20%, 0) rotate(8deg);
+  transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+  mix-blend-mode: overlay;
+}
+
+.liquid-glass:hover::before {
+  transform: translate3d(60%, 20%, 0) rotate(8deg);
+}
+
+.liquid-glass:hover {
+  backdrop-filter: blur(28px) saturate(1.4);
+  filter: saturate(1.08);
 }

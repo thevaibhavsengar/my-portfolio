@@ -24,7 +24,7 @@ export function Hero() {
             Hey There! I am Vaibhav Sengar.
           </h1>
           <p className="mt-7 max-w-2xl text-md font-inter leading-8 text-slate-300 sm:text-md">
-            Software Developer from Nagpur, India focused on full-stack systems, Generative AI, RAG workflows, and deep learning applications that solve practical problems with clarity and speed.
+            Software Developer focused on full-stack development, Generative AI, and scalable AI-powered solutions
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Button asChild><a href="#projects">View Projects <ArrowDownRight className="ml-2 h-4 w-4" /></a></Button>

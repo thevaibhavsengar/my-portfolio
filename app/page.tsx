@@ -1,16 +1,19 @@
-import { ArrowUpRight, BookOpen, BriefcaseBusiness, CheckCircle2, GraduationCap, Mail, ServerCog, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowUpRight, BookOpen, BriefcaseBusiness, Calendar, CheckCircle2, GraduationCap, Mail, ServerCog, ShieldCheck, Sparkles } from "lucide-react";
 import { AnimatedSection } from "@/components/animated-section";
 import { Hero } from "@/components/hero";
 import { SectionHeading } from "@/components/section-heading";
 import { SiteNav } from "@/components/site-nav";
+import { techIcons } from "@/components/tech-icons";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 const skills = [
-  { group: "Frontend", items: ["React", "JavaScript", "TypeScript", "Responsive UI", "Vercel"] },
-  { group: "Backend", items: ["Node.js", "Express.js", "FastAPI", "REST APIs", "MySQL"] },
-  { group: "AI Systems", items: ["Generative AI", "RAG", "LangChain", "Google Gemini API", "FAISS", "PyTorch", "Vision Transformer"] },
-  { group: "Workflow", items: ["Docker", "Postman", "GitHub", "Problem Solving", "Team Collaboration", "Adaptability"] }
+  { group: "Languages", items: ["Python", "JavaScript", "TypeScript", "Java"] },
+  { group: "Backend", items: ["Node.js", "Express.js", "FastAPI", "Flask", "RESTful APIs"] },
+  { group: "Frontend", items: ["React.js", "Next.js", "Redux", "HTML5", "CSS3", "Tailwind CSS", "Streamlit"] },
+  { group: "AI / Generative AI", items: ["RAG", "LLMs", "LangChain", "Hugging Face", "Prompt Engineering", "Semantic Search"] },
+  { group: "Databases", items: ["MySQL", "PostgreSQL", "MongoDB", "Vector Databases"] },
+  { group: "DevOps & Tools", items: ["Docker", "GitHub", "Git", "Postman"] }
 ];
 
 const projects = [
@@ -55,32 +58,54 @@ const highlights = [
   { icon: ShieldCheck, label: "Product thinking", value: "Secure RBAC, clean APIs, practical UX" }
 ];
 
+const experienceHighlights = [
+  { icon: ServerCog, label: "Stack Used", value: "React, Node.js, Express.js, MySQL" },
+  { icon: ShieldCheck, label: "Security", value: "Secure, role-based access control" },
+  { icon: CheckCircle2, label: "Delivered", value: "10+ REST APIs, MVC architecture" }
+];
+
+const educationHighlights = [
+  { icon: BookOpen, label: "Degree", value: "B.Tech, Computer Science and Engineering" },
+  { icon: Calendar, label: "Duration", value: "2021 - 2025" },
+  { icon: GraduationCap, label: "Institution", value: "G.H. Raisoni College of Engineering" }
+];
+
 export default function Home() {
   return (
     <main>
       <SiteNav />
       <Hero />
       <AnimatedSection id="about" className="section-glow section-glow-cyan pt-10">
-        <SectionHeading eyebrow="About" title="Engineering discipline with an AI builder's curiosity." copy="I am a Computer Science graduate with a strong full-stack foundation and a growing specialization in Generative AI and deep learning systems." />
+        <SectionHeading eyebrow="About" title="A Bit About Me" copy="I am a Computer Science graduate with a strong full-stack foundation and a growing specialization in Generative AI and deep learning systems." />
         <div className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
-          <Card className="gradient-border"><CardContent className="p-7 sm:p-8"><p className="text-md leading-8 text-slate-300">I work best at the intersection of software engineering and AI: designing clean system architecture, shaping model pipelines, and shipping complete applications that turn complex ideas into usable products. My recent work spans medical image analysis, Retrieval-Augmented Generation, secure role-based dashboards, and API-first backend systems.</p></CardContent></Card>
-          <div className="grid gap-5">{highlights.map((item) => <Card key={item.label} className="gradient-border"><CardContent className="flex items-start gap-4 p-5"><item.icon className="mt-1 h-5 w-5 text-cyan-300" /><div><p className="font-display text-lg text-white">{item.label}</p><p className="mt-1 text-sm leading-6 text-slate-400">{item.value}</p></div></CardContent></Card>)}</div>
+          <Card className="gradient-border"><CardContent className="p-7 sm:p-8"><p className="text-base leading-7 text-slate-300">I work best at the intersection of software engineering and AI: designing clean system architecture, shaping model pipelines, and shipping complete applications that turn complex ideas into usable products. My recent work spans medical image analysis, Retrieval-Augmented Generation, secure role-based dashboards, and API-first backend systems.</p></CardContent></Card>
+          <div className="grid gap-5">{highlights.map((item) => <Card key={item.label} className="gradient-border"><CardContent className="flex items-start gap-4 p-5"><item.icon className="mt-1 h-5 w-5 text-cyan-300" /><div><p className="font-display text-base text-white">{item.label}</p><p className="mt-1 text-sm leading-6 text-slate-400">{item.value}</p></div></CardContent></Card>)}</div>
         </div>
       </AnimatedSection>
       <AnimatedSection id="skills" className="section-glow section-glow-violet">
-        <SectionHeading eyebrow="Skills" title="Tech Stack" />
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">{skills.map((skill) => <Card key={skill.group} className="gradient-border"><CardContent><h3 className="font-display text-md text-white">{skill.group}</h3><div className="mt-5 flex flex-wrap gap-2">{skill.items.map((item) => <span key={item} className="rounded-full border border-white/10 bg-white/[0.06] px-3 py-1.5 text-sm text-slate-300">{item}</span>)}</div></CardContent></Card>)}</div>
+        <SectionHeading eyebrow="Skills" title="Tools I Work With" />
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{skills.map((skill) => <Card key={skill.group} className="gradient-border"><CardContent><h3 className="font-display text-lg text-white">{skill.group}</h3><div className="mt-5 flex flex-wrap gap-2">{skill.items.map((item) => { const Icon = techIcons[item]; return <span key={item} className="liquid-glass inline-flex cursor-default items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.06] px-3 py-1.5 text-sm text-slate-300 transition-all duration-200 hover:-translate-y-0.5 hover:border-cyan-300/40 hover:bg-cyan-300/[0.10] hover:text-white">{Icon ? <Icon className="h-3.5 w-3.5 text-cyan-300" /> : null}{item}</span>; })}</div></CardContent></Card>)}</div>
       </AnimatedSection>
       <AnimatedSection id="projects" className="section-glow section-glow-emerald">
-        <SectionHeading eyebrow="Projects" title="Hvae a look on my projects." copy="Each project is framed around practical outcomes: accuracy, retrieval quality, secure access, and maintainable architecture." />
-        <div className="grid gap-6">{projects.map((project, index) => <Card key={project.title} className="gradient-border overflow-hidden"><CardContent className="grid gap-7 p-6 sm:p-8 lg:grid-cols-[0.9fr_1.1fr]"><div><p className="text-sm uppercase tracking-[0.28em] text-cyan-300/[0.80]">{project.type}</p><h3 className="mt-3 font-display text-2xl font-semibold text-white sm:text-3xl">{project.title}</h3><p className="mt-4 leading-7 text-slate-300">{project.summary}</p><div className="mt-6 grid gap-3 sm:grid-cols-3">{project.metrics.map((metric) => <div key={metric} className="rounded-lg border border-cyan-200/10 bg-cyan-200/[0.08] px-4 py-3 text-sm text-cyan-100">{metric}</div>)}</div></div><div className="rounded-lg border border-white/10 bg-[#04101f] p-5"><div className="mb-5 flex items-center justify-between"><span className="font-mono text-xs uppercase tracking-[0.28em] text-slate-500">case 0{index + 1}</span><ArrowUpRight className="h-5 w-5 text-cyan-300" /></div><ul className="space-y-4">{project.points.map((point) => <li key={point} className="flex gap-3 text-sm leading-6 text-slate-300"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-cyan-300" />{point}</li>)}</ul><div className="mt-6 flex flex-wrap gap-2">{project.stack.map((tech) => <span key={tech} className="rounded-full bg-white/[0.07] px-3 py-1.5 text-xs text-slate-300">{tech}</span>)}</div></div></CardContent></Card>)}</div>
+        <SectionHeading eyebrow="Projects" title="Things I've Built" copy="Each project is framed around practical outcomes: accuracy, retrieval quality, secure access, and maintainable architecture." />
+        <div className="grid gap-6">{projects.map((project) => <Card key={project.title} className="group gradient-border overflow-hidden"><CardContent className="grid gap-7 p-6 sm:p-8 lg:grid-cols-[0.9fr_1.1fr]"><div><p className="text-sm uppercase tracking-[0.28em] text-cyan-300/[0.80]">{project.type}</p><h3 className="mt-3 font-display text-xl font-semibold text-white sm:text-2xl">{project.title}</h3><p className="mt-4 text-sm leading-7 text-slate-300 sm:text-base">{project.summary}</p><div className="mt-6 grid gap-3 sm:grid-cols-3">{project.metrics.map((metric) => <div key={metric} className="liquid-glass rounded-lg border border-cyan-200/10 bg-cyan-200/[0.08] px-4 py-3 text-sm text-cyan-100 transition-all duration-200 hover:-translate-y-0.5 hover:border-cyan-200/30 hover:bg-cyan-200/[0.14]">{metric}</div>)}</div></div><div className="rounded-lg border border-white/10 bg-[#04101f] p-5"><div className="mb-5 flex items-center justify-between"><span className="font-mono text-xs uppercase tracking-[0.28em] text-slate-500">Project Description</span><ArrowUpRight className="h-5 w-5 text-cyan-300 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></div><ul className="space-y-4">{project.points.map((point) => <li key={point} className="flex gap-3 text-sm leading-6 text-slate-300"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-cyan-300" />{point}</li>)}</ul><div className="mt-6 flex flex-wrap gap-2">{project.stack.map((tech) => <span key={tech} className="liquid-glass cursor-default rounded-full bg-white/[0.07] px-3 py-1.5 text-xs text-slate-300 transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/[0.14] hover:text-white">{tech}</span>)}</div></div></CardContent></Card>)}</div>
       </AnimatedSection>
       <AnimatedSection id="experience" className="section-glow section-glow-rose">
-        <SectionHeading eyebrow="Experience" title="Building production-minded systems early." />
-        <div className="grid gap-5 lg:grid-cols-2"><Card className="gradient-border"><CardContent className="p-7"><BriefcaseBusiness className="mb-5 h-6 w-6 text-cyan-300" /><p className="text-sm uppercase tracking-[0.28em] text-slate-500">Former Intern</p><h3 className="mt-3 font-display text-2xl text-white">Info Origin Technologies Pvt Ltd</h3><p className="mt-4 leading-7 text-slate-300">Built a full-stack internship management system with React, Node.js, Express.js, and MySQL. Delivered secure role-based access, scalable REST APIs, MVC structure, and reliable backend testing workflows.</p></CardContent></Card><Card className="gradient-border"><CardContent className="p-7"><GraduationCap className="mb-5 h-6 w-6 text-cyan-300" /><p className="text-sm uppercase tracking-[0.28em] text-slate-500">Education</p><h3 className="mt-3 font-display text-2xl text-white">B.Tech, Computer Science and Engineering</h3><p className="mt-4 leading-7 text-slate-300">G.H. Raisoni College of Engineering<br />2021 - 2025</p></CardContent></Card></div>
+        <SectionHeading eyebrow="Experience" title="Where I've Worked" />
+        <div className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
+          <Card className="gradient-border"><CardContent className="p-7"><BriefcaseBusiness className="mb-5 h-6 w-6 text-cyan-300" /><p className="text-sm uppercase tracking-[0.28em] text-slate-500">Former Intern</p><h3 className="mt-3 font-display text-xl text-white">Info Origin Technologies Pvt Ltd</h3><p className="mt-4 text-sm leading-7 text-slate-300 sm:text-base">Built a full-stack internship management system with React, Node.js, Express.js, and MySQL. Delivered secure role-based access, scalable REST APIs, MVC structure, and reliable backend testing workflows.</p></CardContent></Card>
+          <div className="grid gap-5">{experienceHighlights.map((item) => <Card key={item.label} className="gradient-border"><CardContent className="flex items-start gap-4 p-5"><item.icon className="mt-1 h-5 w-5 text-cyan-300" /><div><p className="font-display text-base text-white">{item.label}</p><p className="mt-1 text-sm leading-6 text-slate-400">{item.value}</p></div></CardContent></Card>)}</div>
+        </div>
+      </AnimatedSection>
+      <AnimatedSection id="education" className="section-glow section-glow-cyan">
+        <SectionHeading eyebrow="Education" title="What I Studied" />
+        <div className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
+          <Card className="gradient-border"><CardContent className="p-7"><GraduationCap className="mb-5 h-6 w-6 text-cyan-300" /><p className="text-sm uppercase tracking-[0.28em] text-slate-500">Education</p><h3 className="mt-3 font-display text-xl text-white">B.Tech, Computer Science and Engineering</h3><p className="mt-4 text-sm leading-7 text-slate-300 sm:text-base">G.H. Raisoni College of Engineering<br />2021 - 2025</p></CardContent></Card>
+          <div className="grid gap-5">{educationHighlights.map((item) => <Card key={item.label} className="gradient-border"><CardContent className="flex items-start gap-4 p-5"><item.icon className="mt-1 h-5 w-5 text-cyan-300" /><div><p className="font-display text-base text-white">{item.label}</p><p className="mt-1 text-sm leading-6 text-slate-400">{item.value}</p></div></CardContent></Card>)}</div>
+        </div>
       </AnimatedSection>
       <AnimatedSection id="contact" className="section-glow section-glow-violet pb-12">
-        <Card className="gradient-border overflow-hidden border-cyan-200/20 bg-cyan-200/[0.055]"><CardContent className="p-8 sm:p-12"><BookOpen className="mb-6 h-7 w-7 text-cyan-200" /><h2 className="max-w-4xl font-display text-4xl font-semibold leading-tight text-white sm:text-6xl">Interested in AI-powered software, full-stack product work, or developer roles?</h2><p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">I am open to full-time opportunities where I can build reliable software, learn fast, and contribute to teams solving meaningful technical problems.</p><div className="mt-8 flex flex-col gap-3 sm:flex-row"><Button asChild><a href="mailto:vaibhavsengar74@gmail.com"><Mail className="mr-2 h-4 w-4" /> Email Vaibhav</a></Button><Button asChild variant="outline"><a href="https://www.linkedin.com/in/thevaibhavsengar/" target="_blank">Connect on LinkedIn <ArrowUpRight className="ml-2 h-4 w-4" /></a></Button></div></CardContent></Card>
+        <Card className="gradient-border overflow-hidden border-cyan-200/20 bg-cyan-200/[0.055]"><CardContent className="p-8 sm:p-12"><BookOpen className="mb-6 h-7 w-7 text-cyan-200" /><h2 className="max-w-4xl font-display text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl">Let's Connect</h2><p className="mt-6 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">I am open to full-time opportunities where I can build reliable software, learn fast, and contribute to teams solving meaningful technical problems.</p><div className="mt-8 flex flex-col gap-3 sm:flex-row"><Button asChild><a href="mailto:vaibhavsengar74@gmail.com"><Mail className="mr-2 h-4 w-4" /> Email Vaibhav</a></Button><Button asChild variant="outline"><a href="https://www.linkedin.com/in/thevaibhavsengar/" target="_blank">Connect on LinkedIn <ArrowUpRight className="ml-2 h-4 w-4" /></a></Button></div></CardContent></Card>
       </AnimatedSection>
       <footer className="mx-auto flex max-w-7xl flex-col gap-3 border-t border-white/10 px-5 py-8 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-10"><p>Copyright 2026 Vaibhav Sengar. Built with Next.js, TypeScript, Tailwind CSS, Framer Motion, and shadcn/ui.</p><p>Software Developer - AI and problem-solving.</p></footer>
     </main>
